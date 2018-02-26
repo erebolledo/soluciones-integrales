@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Account;
-use App\Package;
 use Mail;
 
 class AccountController extends Controller
