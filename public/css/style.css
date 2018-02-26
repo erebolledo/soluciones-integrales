@@ -1,0 +1,312 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/01/2018, 08:57:06 AM
+    Author     : erebolledo
+*/
+
+.width {
+}
+
+.menu {
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+}
+
+.main-header-bar{
+    background-color: white;
+    position: relative;
+    display: block;
+    padding: 1em;
+    margin: 0px;
+    display: flex;
+    border: 1px solid #e7e7e7;
+    border-top-color: white;
+    height: 167px;    
+    margin-left: 4em;
+    margin-right: 4em;    
+}
+
+.site-branding {
+    
+}
+
+.main-content{
+    margin-bottom: 0em;
+    background-color: white;
+    border: 1px solid #e7e7e7;
+    flex: 1 0 auto;    
+}
+
+.content {
+    padding: 2% 8%;
+}
+
+.footer{
+    background-color: #01274b;
+    position: relative;
+    display: block;
+    border: 1px solid #01274b;
+    color: white;
+    text-align: center;
+    height: 5em;    
+}
+
+.footer-text {
+    position: relative;
+    top: 50%;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;        
+    padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;  
+    background-color: #01274b;
+    background: linear-gradient(#01274b, #dfe9f1);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html{
+    height: 100%;
+}
+
+header {
+    flex: 0 0 auto;    
+}
+
+footer {
+    flex: 0 0 auto;    
+}
+
+h3 {
+    font-weight: 700;
+    color: #01274b;
+}
+
+ul.nav > li:hover {
+    background-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #FF9800;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0;
+}
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+    margin-right: 0px;
+    margin-left: 0px; 
+}
+
+.container-fluid {
+    padding: 0;
+}
+/*
+@media (max-width: 769px) {
+    .navbar-collapse {
+        position: fixed; 
+        background-color: #f8f8f8; 
+        width: 100%; 
+        z-index: 1;
+    }    
+}*/			
+
+@media (min-width: 768px) {
+    .img-menu {
+            padding-right: 70px;
+    }    
+}			
+
+@media (min-width: 1000px) {
+    .navbar-nav {
+        padding-top: 80px;
+    }
+
+    .img-menu {
+            padding-right: 15px;
+    }
+    
+    .width {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }        
+}	
+/*.navbar {
+    border-radius: 0;
+}
+
+.navbar-default {
+    background-color: white; 
+    padding: 14px;
+}
+
+.navbar-nav {
+    margin: 0px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+     border: 0;
+}
+
+.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 95px;
+    margin-right: 95px;
+    margin-bottom: 0px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.navbar-collapse {
+    padding-right: 0px;
+    padding-left: 0px;
+}        
+
+.navbar-header {
+    padding-right: 14px;
+}
+
+@media (min-width: 768px){
+    .navbar-nav {
+        margin: 0;
+        float: inherit;
+        margin-top: 40px;
+        display: block;
+    }    
+    
+    .container-fluid {
+        padding: 0;        
+    }    
+    
+    .navbar {
+        border-radius: 0;
+    }    
+}
+
+@media (min-width: 1074px){
+    .width {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }    
+    
+    .navbar-nav {
+        float: right;
+        margin-top: 87px;
+        display: block;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    
+    .navbar {
+        border-radius: 0;
+    }    
+
+    body {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+}*/
+
+.container-form {
+    /*border-radius: 5px;
+    background-color: #f2f2f2;*/
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 2% 8%;
+    color: inherit;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+    color: black;
+}
+
+.form-signin {
+    max-width: 500px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/*
+ *Estilos del menu de los paquetes 
+ */
+.wrapper {
+    background-color: #e7e7e7;
+    border: 1px solid #e7e7e7;
+}
+
+.wrapper ul {
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+    /* padding-bottom: 0px;*/
+    /* For IE, the outcast */
+    zoom:1;
+    *display: inline;
+    list-style-type: none;
+    width: 100%;    
+}
+
+.wrapper li {
+    float: left;
+    list-style-type: none;
+    padding-right: 30px;
+}
+
+/*
+ * Estilo para el calendario
+ */
+.ui-datepicker {
+    font-size: 11px;
+}
+
+.content-account {
+    padding: 10px;
+}
+
+.box{
+    padding: 10px;
+    border: 1px solid #e7e7e7;
+    width: 70%;
+    background-color: white;
+    margin: 20px;
+    width: 400px;
+}
+
+.box .row {
+    height: 30px;
+}
