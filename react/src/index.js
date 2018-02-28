@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UpdateReg from './UpdateReg';
+import CalculatorForm from './CalculatorForm';
 
 //import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<UpdateReg />, document.getElementById('root'));
+ReactDOM.render(<CalculatorForm />, document.getElementById('root'));
 //registerServiceWorker();

@@ -32,6 +32,7 @@
             window.open('/account/init-session', '_self');
         });
     </script>
+    <input type="hidden" id="server" value="<?=Request::server('HTTP_HOST')?>"/>
     <div id="root"><script src="<?= asset('js/RegForm.js')?>"></script></div>    
 
 @endsection

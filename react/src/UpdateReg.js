@@ -24,13 +24,15 @@ class UpdateReg extends React.Component {
         disabledSubmit: 'btn btn-primary disabled',
         _token: document.getElementById('_token').value
       };
+      
+    this.server = document.getElementById('server').value;
     //this.blurName = this.blurName.bind(this);
   }
   
   componentDidMount(){
     let id = document.getElementById('idUser').value;   
     if (id!=='-1'){
-        axios.get('http://localhost/api/account/get/'+id)
+        axios.get('http://'+this.server+'/api/account/get/'+id)
         .then(response => {
             this.setState({
                 id: response.data.id,
@@ -207,7 +209,7 @@ class UpdateReg extends React.Component {
   }*/
     
     emailExist(regform) {
-        axios.get('http://localhost/api/account/exist/'+this.state.email)
+        axios.get('http://'+this.server+'/api/account/exist/'+this.state.email)
         .then(function (response) {
             if (response.data.valueOf() > 0){
                 document.getElementById('errorEmail').innerHTML = 'Ya existe una cuenta que utiliza este correo electrónico';                

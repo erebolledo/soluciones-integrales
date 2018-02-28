@@ -26,6 +26,8 @@ Route::get('/order/create', 'OrderController@create');
 Route::post('/order/store', 'OrderController@store');
 Route::get('/order/index/{status?}', 'OrderController@index');
 
+Route::get('/calculate', function () {return view('calculator.calculate');});
+
 Route::get('/registry/{id?}', function ($id='-1') {return view('registry', ['id'=>$id]);});
 Route::get('/show', function () {return view('show');});
 Route::get('/logout', 'AccountController@logout');

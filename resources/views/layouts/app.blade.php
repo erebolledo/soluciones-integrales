@@ -38,7 +38,7 @@
                     <li><a href="<?php echo url('account/create') ?>">Registrarse</a></li>                  
                   </ul>
                   <ul class="nav navbar-nav">                    
-                    <li><a href="#">Calculadora</a></li>            
+                    <li><a href="<?php echo url('calculate') ?>">Calculadora</a></li>            
                     <li><a href="#">Soporte</a></li>
                     <?php if (!empty(session('user'))):?>
                         <li><a href="<?php echo url('account/logout') ?>"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
