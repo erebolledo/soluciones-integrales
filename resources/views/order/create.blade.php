@@ -9,7 +9,7 @@
         @include('order.indexBar')
         <div style="border: 1px solid #e7e7e7;padding: 20 10 0;border-top: 0;background-color: #f8f8f8;">
             <h4 style="font-weight: 700;color: #01274b;margin:20 0">Reportar un paquete nuevo</h4>
-            <form action="/order/save" method="post" onsubmit="return verification();" class="content-account">
+            <form action="/order/store" method="post" onsubmit="return verification();" class="content-account">
                 <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
                 <div class="row">
                   <label class="col-25">Número de orden:</label>

@@ -16,6 +16,11 @@
             <?php
                 $idOrder = 100000 + $order->id;  
                 $dateBuyed = (empty($order->buyed))?"---":date("d/m/Y", strtotime($order->buyed));
+                switch ($order->status) {
+                    case 'pending': $statusTrad = 'Pendiente'; break;
+                    case 'received': $statusTrad = 'Recibido'; break;
+                    case 'closed': $statusTrad = 'Entregado'; break;    
+                }
             ?>
             <div class="box">
                 <div class="row"><label>Identificador del paquete: </label>{{$idOrder}}</div>
@@ -23,7 +28,7 @@
                 <div class="row"><label>Número de tracking: </label><?=(empty($order->n_tracking))?"---":$order->n_tracking?></div>
                 <div class="row"><label>Origen: </label><?=(empty($order->store))?"---":$order->store?></div>
                 <div class="row"><label>Fecha de compra: </label><?=$dateBuyed?></div>
-                <div class="row"><label>Estatus: </label><?=$status?></div>
+                <div class="row"><label>Estatus: </label><?=$statusTrad?></div>
             </div>
             <?php endforeach;?>       
         </div>        

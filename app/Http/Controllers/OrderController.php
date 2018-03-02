@@ -38,7 +38,7 @@ class OrderController extends Controller
             case 'pending':
                 $subtitle = 'Paquetes pendientes por entregar';
                 $statusName='<p style="color: orange; margin:0;">Paquetes pendientes</p>';  
-                $queryFormer = "SELECT * FROM packages WHERE id_user=".$user->id." and (status LIKE 'pending' or status LIKE 'received') ORDER BY `packages`.`created_at` DESC";
+                $queryFormer = "SELECT * FROM orders WHERE id_user=".$user->id." and (status LIKE 'pending' or status LIKE 'received') ORDER BY `orders`.`status` DESC, `orders`.`created_at` DESC";
                 $orders = DB::select($queryFormer);
                 //$status = "Paquete pendiente";
                 break;
@@ -50,7 +50,7 @@ class OrderController extends Controller
             case 'closed':
                 $subtitle = 'Paquetes entregados al cliente';
                 $statusName='<p style="color: orange; margin:0;">Paquetes entregados</p>';            
-                $queryFormer = "SELECT * FROM packages WHERE id_user=".$user->id." and status LIKE 'closed' ORDER BY `packages`.`updated_at` DESC";
+                $queryFormer = "SELECT * FROM orders WHERE id_user=".$user->id." and status LIKE 'closed' ORDER BY `orders`.`updated_at` DESC";
                 $orders = DB::select($queryFormer);                
                 //$status = "Paquete entregado";
                 break;
@@ -85,24 +85,20 @@ class OrderController extends Controller
     }
     
     /*
-     * Funcion para salvar una orden/paquete nuevo
-     * @param  int $sent
-     * @return 
+     * Funcion para almacenar los datos de la orden/paquete
+     * @parameters $request son los datos del formulario de la orden
+     * @return void
      */
-    public function save(Request $request){  
+    public function store(Request $request){  
+        $data = $request->all();
         $user = session('user');
-        die(print_r($user));
+        unset($data['_token']);
         
-        $dataArray['id_user']=$user->id;
-        $dataArray['n_order']= substr($request->input('n_order'), 0, 50); 
-        $dataArray['status']= 'pending';
-        $dataArray['n_tracking']= substr($request->input('n_tracking'), 0, 50);
-        $dataArray['store']= substr($request->input('store'), 0, 50); 
-        $dataArray['buyed']= date_format(date_create_from_format("d/m/Y",$request->input('buyed')),"Y-m-d");
-        $dataArray['observations']= $request->input('observations'); 
-        
-        $data = Package::updateOrCreate($dataArray);
-        
-        return redirect('account/pack/pending/1');
+        $data['buyed']= date_format(date_create_from_format("d/m/Y",$data['buyed']),"Y-m-d");
+        $data['id_user'] = $user->id;
+        $data['status'] = 'pending';
+
+        $order = Order::updateOrCreate($data);        
+        return redirect('order/index/pending');
     }
 }
