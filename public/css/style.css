@@ -11,6 +11,14 @@ and open the template in the editor.
 .width {
 }
 
+.img-menu {
+    display: block;
+}
+
+.no-img-menu {
+    display: none;
+}
+
 .menu {
     margin-top: auto;
     margin-left: auto;
@@ -54,7 +62,8 @@ and open the template in the editor.
     border: 1px solid #01274b;
     color: white;
     text-align: center;
-    height: 5em;    
+    /*height: 5em;    */
+    padding: 20px;
 }
 
 .footer-text {
@@ -67,7 +76,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;        
-    padding: 10px;
+    /*padding: 10px;*/
     padding-top: 0px;
     padding-bottom: 0px;  
     background-color: #01274b;
@@ -114,6 +123,64 @@ ul.nav > li:hover {
 .container-fluid {
     padding: 0;
 }
+
+@media (max-width: 400px) {
+    .img-menu {
+        display: none;
+    }
+    
+    .no-img-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 1000px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+
+@media (min-width: 1001px) {
+    .navbar-nav {
+        padding-top: 80px;
+    }    
+    .width {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }            
+}
 /*
 @media (max-width: 769px) {
     .navbar-collapse {
@@ -124,7 +191,7 @@ ul.nav > li:hover {
     }    
 }*/			
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .img-menu {
             padding-right: 70px;
     }    
@@ -144,7 +211,7 @@ ul.nav > li:hover {
         margin-left: auto;
         margin-right: auto;
     }        
-}	
+}*/	
 /*.navbar {
     border-radius: 0;
 }

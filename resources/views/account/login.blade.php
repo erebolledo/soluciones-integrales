@@ -29,15 +29,11 @@
                     <div id="errorPass" class="error"></div>
                 </div>                
             </div>          
-            <div class="row">
-                <div class="col-25"></div>
-                <div class="col-75">
-                    <input type="checkbox" value="remember" id="remember" name="remember"> Recordarme
-                </div>                
+            <div class="row" style="margin-left: 25%">
+                <input type="checkbox" value="remember" id="remember" name="remember"> Recordarme
             </div>
-
             <div class="row" style="text-align: center;">
-                <a href="<?php echo url('account/create')?>">Crear una cuenta/registrarse</a>&nbsp;|&nbsp;<a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
+                <a href="<?php echo url('account/create')?>">Crear una cuenta/registrarse</a> | <a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
             </div>          
             <button class="btn btn-lg btn-primary" style="width: 100%; float: none;" type="button" onclick="auth()">Entrar</button>
       </form>    

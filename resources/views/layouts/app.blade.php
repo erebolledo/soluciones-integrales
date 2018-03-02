@@ -1,6 +1,10 @@
 <!-- Stored in resources/views/layouts/app.blade.php -->
 <html lang="{{ app()->getLocale() }}">
     <head>
+        <title>Soluciones Integrales</title>
+        <noscript>Es necesario Javascrit para ejecutar esta aplicación.</noscript>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>-->
         <!--<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>-->
@@ -13,8 +17,6 @@
         <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
         <link rel="stylesheet" href="<?php echo asset('css/form.css')?>" type="text/css">        
         <link rel="icon" href="<?php echo asset('images/integralIcono.png')?>" sizes="192x192" />
-        <title>Soluciones Integrales</title>
-        <noscript>Es necesario Javascrit para ejecutar esta aplicación.</noscript>
     </head>
     <body>
         <div>
@@ -29,15 +31,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <div class="img-menu"><a href="/"><img src="<?php echo asset('images/cropped-integral-logo.png')?>"></a></div>
+                    <div class="img-menu">
+                        <a href="/"><img src="<?php echo asset('images/cropped-integral-logo.png')?>"></a>
+                    </div>
+                    <div class="no-img-menu"><a href="/"><h1 style="font-weight: bolder;color: #01274b;">Soluciones Integrales</h1></a></div>                    
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav">
+                  <ul class="nav navbar-nav navbar-right" style="font-size: medium">
                     <li><a href="<?php echo url('/') ?>">Principal</a></li>
                     <li><a href="<?php echo url('order/index') ?>">Cuenta</a></li>
                     <li><a href="<?php echo url('account/create') ?>">Registrarse</a></li>                  
-                  </ul>
-                  <ul class="nav navbar-nav">                    
                     <li><a href="<?php echo url('calculate') ?>">Calculadora</a></li>            
                     <li><a href="#">Soporte</a></li>
                     <?php if (!empty(session('user'))):?>
