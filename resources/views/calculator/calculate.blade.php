@@ -3,7 +3,8 @@
     <h3>Calcular costos</h3>
     <div class="container-form">
         <div class="row">
-            <h3 style="width: 220;float: left;">Datos del paquete</h3><h5 style="margin-top: 30px;">(Se  deben llenar todos los campos)</h5>
+            <h3 style="width: 220;float: left;">Datos del paquete</h3>
+            <h5 style="margin-top: 30px;">(Se&nbsp;deben&nbsp;llenar&nbsp;todos&nbsp;los&nbsp;campos)</h5>
         </div>
         <form name="form" id="regForm" method="post" action="/account/store">
             <div class="row">
@@ -78,7 +79,7 @@
                             <option>BsF</option>
                             <option>$</option>
                         </select>
-                    </div>                    
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -111,7 +112,9 @@
         $("#weight").on('keyup', function () {
             $(this).val($(this).val().replace(/,/g, '.'));
             calculateDisabled();
-        });        
+        }); 
+        
+        //console.log($('#divPrice').prop('style.width', 200));
 
         var calculateDisabled = function () {
             if (($('#long').val()) && $('#wide').val() && $('#high').val() && $('#weight').val())
