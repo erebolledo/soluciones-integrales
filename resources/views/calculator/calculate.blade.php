@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <h3>Calcular costos</h3>
+    <h3>CALCULAR COSTOS</h3>
     <div class="container-form">
         <div class="row">
             <h3 style="width: 220;float: left;">Datos del paquete</h3>
@@ -12,8 +12,8 @@
                     <label>Medidas en</label>
                 </div>
                 <div class="col-50">
-                    <div style="width: 120px; float: left ">
-                        <select class="form-control" id="measure">
+                    <div style="width: 100%; float: left ">
+                        <select class="form-control" style="height:46px" id="measure">
                             <option>pulgadas</option>
                             <option>cm</option>                            
                         </select>
@@ -25,7 +25,7 @@
                     <label>Largo</label>
                 </div>
                 <div class="col-50">
-                    <input type="text" id="long" name="long" placeholder="Ejemplo: 2.5"/>
+                    <input type="text" id="long" name="long"/> <!--placeholder="Ejemplo: 2.5"/>-->
                     <div id="errorLong" class="error"></div>
                 </div>
             </div>                    
@@ -34,7 +34,7 @@
                     <label>Ancho</label>
                 </div>
                 <div class="col-50">
-                    <input type="text" id="wide" name="wide" placeholder="Ejemplo: 1.8"/>
+                    <input type="text" id="wide" name="wide"/> <!--placeholder="Ejemplo: 2.5"/>-->
                     <div id="errorWide" class="error"></div>
                 </div>
             </div>                    
@@ -43,7 +43,7 @@
                     <label>Alto</label>
                 </div>
                 <div class="col-50">
-                    <input type="text" id="high" name="high" placeholder="Ejemplo: 8"/>
+                    <input type="text" id="high" name="high"/> <!--placeholder="Ejemplo: 2.5"/>-->
                     <div id="errorHigh" class="error"></div>
                 </div>
             </div>                        
@@ -52,12 +52,12 @@
                     <label>Peso</label>
                 </div>
                 <div class="col-50">
-                    <div style="width: 80%; float: left ">
-                        <input type="text" id="weight" name="weight" placeholder="Ejemplo: 5.4"/>
+                    <div class="input-select">
+                        <input type="text" id="weight" name="weight"/> <!--placeholder="Ejemplo: 2.5"/>-->
                         <div id="errorWeight" class="error"></div>                        
                     </div>    
-                    <div style="width: 20%; float: left ">
-                        <select class="form-control" id="weightUnit">
+                    <div class="select-input">
+                        <select class="form-control" id="weightUnit" style="height:46px">
                             <option>lb</option>
                             <option>kg</option>                            
                         </select>
@@ -70,12 +70,12 @@
                     <label>Costo del envio</label>
                 </div>
                 <div class="col-50">
-                    <div style="width: 80%; float: left ">
+                    <div class="input-select">
                         <input type="text" id="price" name="price" readonly/>
                         <div id="errorPrice" class="error"></div>
                     </div>
-                    <div style="width: 20%; float: left ">
-                        <select class="form-control" id="moneyUnit">
+                    <div class="select-input">
+                        <select class="form-control" id="moneyUnit" style="height:46px">
                             <option>BsF</option>
                             <option>$</option>
                         </select>
@@ -113,7 +113,12 @@
             $(this).val($(this).val().replace(/,/g, '.'));
             calculateDisabled();
         }); 
-        
+
+        $("#moneyUnit").on('change', function () {
+            if ($('#button').prop('disabled')===false)
+                calculate();
+        }); 
+
         //console.log($('#divPrice').prop('style.width', 200));
 
         var calculateDisabled = function () {
@@ -187,10 +192,10 @@
             }
             
             if (volPounds > pounds){
-                $('#errorPrice').html('Peso volumétrico');
+                $('#errorPrice').html('Por peso volumétrico');
                 $('#price').val(volPounds*priceForPound);
             }else{
-                $('#errorPrice').html('Peso');
+                $('#errorPrice').html('');
                 $('#price').val(pounds*priceForPound);
             }
                 
