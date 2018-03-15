@@ -56,7 +56,7 @@ and open the template in the editor.
 }
 
 .content {
-    padding: 2% 8%;
+    padding: 2% 8% !important;
 }
 
 .footer{
