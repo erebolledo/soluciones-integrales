@@ -1,4 +1,17 @@
 <!-- Stored in resources/views/layouts/app.blade.php -->
+<?php 
+/*$values = [7,15,17,21];
+$nValues = count($values);
+$total=0;
+
+for($i=0;$i<$nValues;$i++){
+    $total+=$values[$i];
+}
+
+echo $total;
+
+die();*/
+?>
 <html lang="{{ app()->getLocale() }}">
     <head>
         <title>Soluciones Integrales</title>
@@ -25,16 +38,22 @@
               <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" 
-                                aria-expanded="false" aria-controls="navbar" style="margin-top: 50px">
+                                aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
                     <div class="img-menu">
-                        <a href="/"><img src="<?php echo asset('images/cropped-integral-logo.png')?>"></a>
+                        <a href="/"><img src="<?php echo asset('images/cropped-integral-logo-envios.png')?>" width="350px"></a>
                     </div>
-                    <div class="no-img-menu"><a href="/"><h1 style="font-weight: bolder;color: #01274b;">Soluciones Integrales</h1></a></div>                    
+                    <div class="no-img-menu">
+                        <a href="/">
+                            <h1 style="font-weight: bolder;color: #01274b; margin: 0px;">
+                                Soluciones Integrales <font color="orange">Envios</font>
+                            </h1>
+                        </a>
+                    </div>                    
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right" style="font-size: medium">
@@ -60,7 +79,7 @@
             </nav>
         </header>
         <section class="main-content width">
-            <div class="content">
+            <div class="">
                 @yield('content')
             </div>
         </section>

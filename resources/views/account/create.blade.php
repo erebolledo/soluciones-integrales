@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')    
+<div class="content">
     <h3>REGISTRO</h3>
     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"/>
     <script>        
@@ -34,5 +35,5 @@
     </script>
     <input type="hidden" id="server" value="<?=Request::server('HTTP_HOST')?>"/>
     <div id="root"><script src="<?= asset('js/RegForm.js')?>"></script></div>    
-
+</div>
 @endsection

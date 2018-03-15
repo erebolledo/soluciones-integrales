@@ -1,124 +1,127 @@
 @extends('layouts.app')
 @section('content')
-    <h3>CALCULAR COSTOS</h3>
-    <div class="container-form">
-        <div class="row">
-            <h3 style="width: 220;float: left;">Datos del paquete</h3>
-            <h5 style="margin-top: 30px;">(Se&nbsp;deben&nbsp;llenar&nbsp;todos&nbsp;los&nbsp;campos)</h5>
-        </div>
-        <form name="form" id="regForm" method="post" action="/account/store">
+    <div class="content">
+        <h3>CALCULAR COSTOS</h3>
+        <div class="container-form">
             <div class="row">
-                <div class="col-25">
-                    <label>Medidas en</label>
-                </div>
-                <div class="col-50">
-                    <div style="width: 100%; float: left ">
-                        <select class="form-control" style="height:46px" id="measure">
-                            <option>pulgadas</option>
-                            <option>cm</option>                            
-                        </select>
-                    </div>                    
-                </div>
-            </div>    
-            <div class="row">
-                <div class="col-25">
-                    <label>Largo</label>
-                </div>
-                <div class="col-50">
-                    <input type="text" id="long" name="long"/> <!--placeholder="Ejemplo: 2.5"/>-->
-                    <div id="errorLong" class="error"></div>
-                </div>
-            </div>                    
-            <div class="row">
-                <div class="col-25">
-                    <label>Ancho</label>
-                </div>
-                <div class="col-50">
-                    <input type="text" id="wide" name="wide"/> <!--placeholder="Ejemplo: 2.5"/>-->
-                    <div id="errorWide" class="error"></div>
-                </div>
-            </div>                    
-            <div class="row">
-                <div class="col-25">
-                    <label>Alto</label>
-                </div>
-                <div class="col-50">
-                    <input type="text" id="high" name="high"/> <!--placeholder="Ejemplo: 2.5"/>-->
-                    <div id="errorHigh" class="error"></div>
-                </div>
-            </div>                        
-            <div class="row">
-                <div class="col-25">
-                    <label>Peso</label>
-                </div>
-                <div class="col-50">
-                    <div class="input-select">
-                        <input type="text" id="weight" name="weight"/> <!--placeholder="Ejemplo: 2.5"/>-->
-                        <div id="errorWeight" class="error"></div>                        
-                    </div>    
-                    <div class="select-input">
-                        <select class="form-control" id="weightUnit" style="height:46px">
-                            <option>lb</option>
-                            <option>kg</option>                            
-                        </select>
-                    </div>                    
-                </div>
-            </div>                                    
-            <hr/>
-            <div class="row">
-                <div class="col-25">
-                    <label>Costo del envio</label>
-                </div>
-                <div class="col-50">
-                    <div class="input-select">
-                        <input type="text" id="price" name="price" readonly/>
-                        <div id="errorPrice" class="error"></div>
-                    </div>
-                    <div class="select-input">
-                        <select class="form-control" id="moneyUnit" style="height:46px">
-                            <option>BsF</option>
-                            <option>$</option>
-                        </select>
-                    </div>
-                </div>
+                <h3 style="width: 220;float: left;">Datos del paquete</h3>
+                <h5 style="margin-top: 30px;">(Se&nbsp;deben&nbsp;llenar&nbsp;todos&nbsp;los&nbsp;campos)</h5>
             </div>
-            <div class="row">
-                <div class="col-25"></div>
-                <div class="col-50">                    
-                    <input type="button" id="button" class="btn btn-primary" title="Debes llenar todos los datos" disabled="true" value="Calcular" onclick="calculate()"/>
-                    <input type="reset" id="reset" class="btn btn-default" value="Limpiar"/>                    
+            <form name="form" id="regForm" method="post" action="/account/store">
+                <div class="row">
+                    <div class="col-25">
+                        <label>Medidas en</label>
+                    </div>
+                    <div class="col-50">
+                        <div style="width: 100%; float: left ">
+                            <select class="form-control" style="height:46px" id="measure">
+                                <option>pulgadas</option>
+                                <option>cm</option>                            
+                            </select>
+                        </div>                    
+                    </div>
+                </div>    
+                <div class="row">
+                    <div class="col-25">
+                        <label>Largo</label>
+                    </div>
+                    <div class="col-50">
+                        <input type="text" id="long" name="long"/> <!--placeholder="Ejemplo: 2.5"/>-->
+                        <div id="errorLong" class="error"></div>
+                    </div>
+                </div>                    
+                <div class="row">
+                    <div class="col-25">
+                        <label>Ancho</label>
+                    </div>
+                    <div class="col-50">
+                        <input type="text" id="wide" name="wide"/> <!--placeholder="Ejemplo: 2.5"/>-->
+                        <div id="errorWide" class="error"></div>
+                    </div>
+                </div>                    
+                <div class="row">
+                    <div class="col-25">
+                        <label>Alto</label>
+                    </div>
+                    <div class="col-50">
+                        <input type="text" id="high" name="high"/> <!--placeholder="Ejemplo: 2.5"/>-->
+                        <div id="errorHigh" class="error"></div>
+                    </div>
+                </div>                        
+                <div class="row">
+                    <div class="col-25">
+                        <label>Peso</label>
+                    </div>
+                    <div class="col-50">
+                        <div class="input-select">
+                            <input type="text" id="weight" name="weight"/> <!--placeholder="Ejemplo: 2.5"/>-->
+                            <div id="errorWeight" class="error"></div>                        
+                        </div>    
+                        <div class="select-input">
+                            <select class="form-control" id="weightUnit" style="height:46px">
+                                <option>lb</option>
+                                <option>kg</option>                            
+                            </select>
+                        </div>                    
+                    </div>
+                </div>                                    
+                <hr/>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Costo del envio</label>
+                    </div>
+                    <div class="col-50">
+                        <div class="input-select">
+                            <input type="text" id="price" name="price" readonly/>
+                            <div id="errorPrice" class="error"></div>
+                        </div>
+                        <div class="select-input">
+                            <select class="form-control" id="moneyUnit" style="height:46px">
+                                <option>BsF</option>
+                                <option>$</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-        </div>        
+                <div class="row">
+                    <div class="col-25"></div>
+                    <div class="col-50">                    
+                        <input type="button" id="button" class="btn btn-primary" title="Debes llenar todos los datos" disabled="true" value="Calcular" onclick="calculate()"/>
+                        <input type="reset" id="reset" class="btn btn-default" value="Limpiar"/>                    
+                    </div>
+            </div>        
 
-        </form>
-    </div> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+            </form>
+        </div> 
+    </div>    
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>-->
     <script>
-        $("#long").on('keyup', function () {
-            $(this).val($(this).val().replace(/,/g, '.'));
-            calculateDisabled();
-        });
-        
-        $("#wide").on('keyup', function () {
-            $(this).val($(this).val().replace(/,/g, '.'));
-            calculateDisabled();
-        });
-        
-        $("#high").on('keyup', function () {
-            $(this).val($(this).val().replace(/,/g, '.'));
-            calculateDisabled();
-        });        
-        
-        $("#weight").on('keyup', function () {
-            $(this).val($(this).val().replace(/,/g, '.'));
-            calculateDisabled();
-        }); 
+        $( document ).ready(function() {
+            $("#long").on('keyup', function () {
+                $(this).val($(this).val().replace(/,/g, '.'));
+                calculateDisabled();
+            });
 
-        $("#moneyUnit").on('change', function () {
-            if ($('#button').prop('disabled')===false)
-                calculate();
-        }); 
+            $("#wide").on('keyup', function () {
+                $(this).val($(this).val().replace(/,/g, '.'));
+                calculateDisabled();
+            });
 
+            $("#high").on('keyup', function () {
+                $(this).val($(this).val().replace(/,/g, '.'));
+                calculateDisabled();
+            });        
+
+            $("#weight").on('keyup', function () {
+                $(this).val($(this).val().replace(/,/g, '.'));
+                calculateDisabled();
+            }); 
+
+            $("#moneyUnit").on('change', function () {
+                if ($('#button').prop('disabled')===false)
+                    calculate();
+            }); 
+        });
         //console.log($('#divPrice').prop('style.width', 200));
 
         var calculateDisabled = function () {

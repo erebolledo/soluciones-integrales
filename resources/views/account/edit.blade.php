@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')    
+<div class="content">
     <h3>EDITAR</h3>
     <input type="hidden" name="idUser" id="idUser" value="{{ $user->id }}"/>
     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"/>
@@ -35,5 +36,5 @@
     </script>
     <input type="hidden" id="server" value="<?=Request::server('HTTP_HOST')?>"/>
     <div id="root"><script src="<?= asset('js/UpdateReg.js')?>"></script></div>    
-
+</div>
 @endsection

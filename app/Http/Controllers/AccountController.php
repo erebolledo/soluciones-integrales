@@ -55,6 +55,9 @@ class AccountController extends Controller
      * @return void
      */
     public function store(Request $request){
+        session()->flush();
+        session()->save();        
+        
         $data = $request->all();
         unset($data['_token']);
         $user = Account::updateOrCreate($data);

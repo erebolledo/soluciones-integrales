@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-
+<div class="content">
     <h3>ENTRAR</h3>
     <div class="container-form" id="effect">
         <form class="form-signin" method="post" action="/account/init-session" id="form">
@@ -29,18 +29,32 @@
                     <div id="errorPass" class="error"></div>
                 </div>                
             </div>          
-            <div class="row" style="margin-left: 25%">
+            <div class="row" style="text-align: center; margin-top: 10px;">
                 <input type="checkbox" value="remember" id="remember" name="remember"> Recordarme
             </div>
             <div class="row" style="text-align: center;">
-                <a href="<?php echo url('account/create')?>">Crear una cuenta/registrarse</a> | <a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
+                <a href="<?php echo url('account/create')?>">Crear una cuenta</a> | <a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
             </div>          
             <button class="btn btn-lg btn-primary" style="width: 100%; float: none;" type="button" onclick="auth()">Entrar</button>
       </form>    
     </div>
+</div>    
+    <script>
+        $( document ).ready(function() {
+            $('#email').on('keyup', function () {
+                $('#email').css( "background-color", "white" );
+                $('#errorEmail').html('');
+            });             
+            
+            $('#password').on('keyup', function () {
+                $('#password').css( "background-color", "white" );
+                $('#errorPass').html('');
+            });                         
+        });            
+    </script>    
 @endsection
 
-<script>
+<script>    
     function auth(){
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
@@ -74,6 +88,7 @@
             }                
         })
         .catch(function (error) {
+            alert('Revise su conexión a Internet');
             console.log(error);
         });
     }

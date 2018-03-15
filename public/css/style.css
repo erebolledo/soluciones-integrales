@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : erebolledo
 */
 
+* {
+    box-sizing: border-box;
+}
+
 .width {
 }
 
@@ -81,6 +85,8 @@ body {
     padding-bottom: 0px;  
     background-color: #01274b;
     background: linear-gradient(#01274b, #dfe9f1);
+    /*background-color: #87CEEB;
+    background: linear-gradient(#87CEEB, #FFFFFF);*/
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
@@ -102,6 +108,16 @@ h3 {
     color: #01274b;
 }
 
+.input-select {
+    width: 80%; 
+    float: left; 
+}
+
+.select-input {
+    width: 20%; 
+    float: left; 
+}
+
 ul.nav > li:hover {
     background-color: #e7e7e7;
 }
@@ -121,10 +137,19 @@ ul.nav > li:hover {
 }
 
 .container-fluid {
-    padding: 0;
+    /*padding: 0;*/
 }
 
-@media (max-width: 400px) {
+.shadow-white {
+    color: black;
+    //text-shadow: 1px 1px #FFFFFF;
+}
+
+p .shadow-white {
+    font-size: larger;
+}
+
+@media (max-width: 1000px) {
     .img-menu {
         display: none;
     }
@@ -132,6 +157,27 @@ ul.nav > li:hover {
     .no-img-menu {
         display: block;
     }
+    
+    .input-select {
+        width: 70%; 
+        float: left; 
+    }
+
+    .select-input {
+        width: 30%; 
+        float: left; 
+    }    
+    
+    .no-img-menu > a > h1 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }    
+}
+
+@media (max-width: 800px) {
+    .carousel-caption .shadow-white {
+        display: none;
+    }        
 }
 
 @media (max-width: 1000px) {
@@ -168,12 +214,12 @@ ul.nav > li:hover {
     }
     .collapse.in{
         display:block !important;
-    }
+    }    
 }
 
 @media (min-width: 1001px) {
     .navbar-nav {
-        padding-top: 80px;
+        padding-top: 25px;
     }    
     .width {
         width: 1000px;
@@ -181,125 +227,6 @@ ul.nav > li:hover {
         margin-right: auto;
     }            
 }
-/*
-@media (max-width: 769px) {
-    .navbar-collapse {
-        position: fixed; 
-        background-color: #f8f8f8; 
-        width: 100%; 
-        z-index: 1;
-    }    
-}*/			
-
-/*@media (min-width: 768px) {
-    .img-menu {
-            padding-right: 70px;
-    }    
-}			
-
-@media (min-width: 1000px) {
-    .navbar-nav {
-        padding-top: 80px;
-    }
-
-    .img-menu {
-            padding-right: 15px;
-    }
-    
-    .width {
-        width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-    }        
-}*/	
-/*.navbar {
-    border-radius: 0;
-}
-
-.navbar-default {
-    background-color: white; 
-    padding: 14px;
-}
-
-.navbar-nav {
-    margin: 0px;
-}
-
-.navbar-default .navbar-collapse, .navbar-default .navbar-form {
-     border: 0;
-}
-
-.navbar-toggle {
-    position: relative;
-    float: right;
-    padding: 9px 10px;
-    margin-top: 95px;
-    margin-right: 95px;
-    margin-bottom: 0px;
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.navbar-collapse {
-    padding-right: 0px;
-    padding-left: 0px;
-}        
-
-.navbar-header {
-    padding-right: 14px;
-}
-
-@media (min-width: 768px){
-    .navbar-nav {
-        margin: 0;
-        float: inherit;
-        margin-top: 40px;
-        display: block;
-    }    
-    
-    .container-fluid {
-        padding: 0;        
-    }    
-    
-    .navbar {
-        border-radius: 0;
-    }    
-}
-
-@media (min-width: 1074px){
-    .width {
-        width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-    }    
-    
-    .navbar-nav {
-        float: right;
-        margin-top: 87px;
-        display: block;
-
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .container-fluid {
-        padding-right: 0px;
-        padding-left: 0px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-    
-    .navbar {
-        border-radius: 0;
-    }    
-
-    body {
-        padding-left: 4em;
-        padding-right: 4em;
-    }
-}*/
 
 .container-form {
     /*border-radius: 5px;
@@ -362,7 +289,7 @@ label {
 }
 
 .content-account {
-    padding: 10px;
+    padding: 10px 20px;
 }
 
 .box{
@@ -377,3 +304,4 @@ label {
 .box .row {
     height: 30px;
 }
+

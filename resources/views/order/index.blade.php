@@ -2,13 +2,13 @@
 
 @section('content')
 <?php 
-    $name = explode(' ', $user->name);
-    $name = $name[0];
+    $name = $user->name;//explode(' ', $user->name);
+    //$name = $name[0];
 ?>
-    <div>
+    <div class="content">
         @include('order.indexBar')
         <div style="border: 1px solid #e7e7e7;padding: 20 10 0;border-top: 0;background-color: #f8f8f8;">
-            <h4 style="font-weight: 700;color: #01274b;margin:20 0">{{$subtitle}}</h4>
+            <h4 style="font-weight: 700;color: #01274b;margin:20 20">{{$subtitle}}</h4>
             <?php if (empty($orders)):?>
                 <h3 style="text-align: center; margin: 30px; color: orange">No existen paquetes en esta lista</h3>
             <?php endif;?>    
