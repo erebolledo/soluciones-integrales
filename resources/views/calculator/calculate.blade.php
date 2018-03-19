@@ -8,6 +8,7 @@
                 <h5 style="margin-top: 30px;">(Se&nbsp;deben&nbsp;llenar&nbsp;todos&nbsp;los&nbsp;campos)</h5>
             </div>
             <form name="form" id="regForm" method="post" action="/account/store">
+                <input type="hidden" name="dollarValue" id="dollarValue" value="{{$dollar->value}}"/>
                 <div class="row">
                     <div class="col-25">
                         <label>Medidas en</label>
@@ -72,8 +73,9 @@
                     </div>
                     <div class="col-50">
                         <div class="input-select">
-                            <input type="text" id="price" name="price" readonly/>
-                            <div id="errorPrice" class="error"></div>
+                            <input type="text" id="price" name="price" class="number" readonly>                          
+                            <div id="errorPrice" class="error" style="position: relative; float: none"></div>
+                            <div id="errorBs" class="error" style="position: relative; float: none"></div>
                         </div>
                         <div class="select-input">
                             <select class="form-control" id="moneyUnit" style="height:46px">
@@ -90,7 +92,6 @@
                         <input type="reset" id="reset" class="btn btn-default" value="Limpiar"/>                    
                     </div>
             </div>        
-
             </form>
         </div> 
     </div>    
@@ -129,6 +130,18 @@
                 $('#button').prop('disabled', false);
             else
                 $('#button').prop('disabled', true);
+        }
+        
+        function addCommas(nStr) {
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? ',' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + '.' + '$2');
+            }
+            return x1 + x2;
         }
         
         function calculate() {
@@ -191,20 +204,20 @@
             let volPounds = Math.ceil((Math.ceil(long)*Math.ceil(wide)*Math.ceil(high))/factor);
             
             if ($('#moneyUnit').val()==='BsF'){
-                priceForPound = priceForPound*200000;
-            }
+                priceForPound = priceForPound*$('#dollarValue').val();                
+                $('#errorBs').html('* Costo aproximado en BsF.');
+            }else{
+                $('#errorBs').html('');
+            }            
             
             if (volPounds > pounds){
-                $('#errorPrice').html('Por peso volumétrico');
-                $('#price').val(volPounds*priceForPound);
+                $('#errorPrice').html('* Por peso volumétrico.');
+                $('#price').val(addCommas((volPounds*priceForPound).toFixed(2)));
             }else{
                 $('#errorPrice').html('');
-                $('#price').val(pounds*priceForPound);
+                $('#price').val(addCommas((volPounds*priceForPound).toFixed(2)));
             }
                 
-            console.log(pounds);
-            console.log(volPounds);
-
         };
 
         /*$(document).on('change', '.unitprice', function() {

@@ -34,7 +34,7 @@ die();*/
     <body>
         <div>
         <header class="width">
-            <nav class="navbar navbar-default" style="padding: 14px">
+            <nav class="navbar navbar-default width" id="navMenu" style="padding: 14px">
               <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" 
@@ -56,12 +56,13 @@ die();*/
                     </div>                    
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav navbar-right" style="font-size: medium">
+                  <ul class="nav navbar-nav navbar-right">
                     <li><a href="<?php echo url('/') ?>">Principal</a></li>
                     <li><a href="<?php echo url('order/index') ?>">Cuenta</a></li>
                     <li><a href="<?php echo url('account/create') ?>">Registrarse</a></li>                  
-                    <li><a href="<?php echo url('calculate') ?>">Calculadora</a></li>            
-                    <li><a href="#">Soporte</a></li>
+                    <li><a href="<?php echo url('calculate') ?>">Calcular</a></li>
+                    <li><a href="<?php echo url('#') ?>" data-toggle="modal" data-target="#myModal">Datos envío</a></li>
+                    <li><a href="<?php echo url('support') ?>">Soporte</a></li>
                     <?php if (!empty(session('user'))):?>
                         <li><a href="<?php echo url('account/logout') ?>"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
                     <?php endif;?>                     
@@ -75,10 +76,24 @@ die();*/
                     </li>-->
                   </ul>
                 </div><!--/.nav-collapse -->
-              </div><!--/.container-fluid -->
+              </div><!--/.container-fluid -->              
             </nav>
         </header>
-        <section class="main-content width">
+        <section class="main-content width" id="section">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>sagasg asasdgasdg</p>
+                            <p>asddsag sgagasg</p>
+                            <p>sagasg asasdgasdg</p>
+                            <p>asddsag sgagasg</p>                          
+                        </div>
+                    </div>      
+                </div>
+            </div>            
+            
             <div class="">
                 @yield('content')
             </div>
@@ -93,4 +108,11 @@ die();*/
     </div>
         
     </body>
+    <script>
+        $( document ).ready(function() {
+            //console.log($("#navMenu").height());
+            //$('#section').css( "margin-top", $("#navMenu").height() + 50);
+            //$('#section').height($("#navMenu").height() + 30);
+        });        
+    </script>    
 </html>

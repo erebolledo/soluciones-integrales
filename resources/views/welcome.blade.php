@@ -67,10 +67,11 @@
                     9802 NW 80th av. G47 Hialeah Gardens Fl, 33016                
                 </p>
                 <p>
-                    Para sus envios recuerde que debe colocar los datos de su cuenta en la dirección, <a href="support/#address">más información acá</a>. 
+                    Para sus envios recuerde que debe colocar los datos de su cuenta en la dirección, como puede ver 
+                    <a href="#" data-toggle="modal" data-target="#myModal">acá</a>. 
                 </p>
                 <p>
-                    ¿No posee una cuenta? <a href="/#openAccount">Registrate aquí</a>.
+                    ¿No posee una cuenta? <a href="<?php echo url('account/create')?>">Registrate aquí</a>.
                 </p>
             </div>            
             <div class="col-sm-12 col-md-6" style="color: white">

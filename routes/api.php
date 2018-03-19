@@ -22,4 +22,6 @@ Route::post('/account/auth', 'AccountController@auth');
 Route::get('/account/exist/{email}', 'AccountController@exist');
 Route::get('/account/get/{id}', 'AccountController@get');
 
+Route::get('/account/get-dollar-value', 'AccountController@getDollarValue');
+
 

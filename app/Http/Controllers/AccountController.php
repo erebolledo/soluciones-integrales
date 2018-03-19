@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\DollarValue;
 use App\Account;
 use Mail;
 
@@ -89,7 +90,6 @@ class AccountController extends Controller
     public function auth(Request $request) {
         header('Access-Control-Allow-Origin: *');
         $data = json_decode($request->getContent());
-        //erer@adad.com        
 
         $res = Account::where('email', $data->email)->first();
 
@@ -158,10 +158,46 @@ class AccountController extends Controller
         $user = Account::find(57);
 
         Mail::send('account.email', ['user' => $user], function ($m) use ($user) {
-            $m->from('karen.suarez@gmail.com', 'Nuestra aplicacion');
+            $m->from('envios@soluciones-integrales.com.ve', 'Nuestra aplicacion con el nuevo dominio');
 
-            $m->to('karen.suarez@gmail.com', $user->name)->subject('prueba de correo');
+            $m->to('erkarebolledo@gmail.com', $user->name)->subject('prueba de correo');
         });        
     }
     
+    /*
+     * Funcion para obtener el valor del dolar, debe ser llamada desde el crontab
+     * @result $dollar Es el valor del dolar en ese momento
+     */
+    public function getDollarValue(){        
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'https://twitter.com/dolartoday?lang=es');
+        $page = $res->getBody()->getContents();
+        $page = explode('el $ cotiza a Bs. ', $page);
+        $page = explode(' ', $page[1]);
+        $value = str_replace(',', '.', $page[0]);
+        
+        if (!empty($value)){
+            $data = ['value'=>$value];
+            $dollar = DollarValue::updateOrCreate($data);
+        }else{
+            $dollar = '';
+        }
+        
+        return $dollar;        
+    }
+    
+    public function calculate() {
+        $dollar = DollarValue::orderBy('created_at', 'desc')->first();
+        return view('calculator.calculate',['dollar'=>$dollar]);        
+    }
+    
+    public function test(){
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'https://twitter.com/dolartoday?lang=es');
+        $page = $res->getBody()->getContents();
+        $page = explode('el $ cotiza a Bs. ', $page);        
+        $value = explode(' ', $page[1]);
+        
+        return $value;
+    }
 }

@@ -26,7 +26,11 @@ Route::get('/order/create', 'OrderController@create');
 Route::post('/order/store', 'OrderController@store');
 Route::get('/order/index/{status?}', 'OrderController@index');
 
-Route::get('/calculate', function () {return view('calculator.calculate');});
+Route::get('/calculate', 'AccountController@calculate');
+
+Route::get('/support', function () {return view('support.support');});
+
+Route::any('/account/test', 'AccountController@test');
 
 Route::get('/registry/{id?}', function ($id='-1') {return view('registry', ['id'=>$id]);});
 Route::get('/show', function () {return view('show');});

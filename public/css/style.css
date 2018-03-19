@@ -30,6 +30,26 @@ and open the template in the editor.
     margin-bottom: 0px;
 }
 
+.no-dot {
+    list-style-type: none;
+}
+
+.question {
+    margin-top: 30px;
+}
+
+.question h4 {
+    color: orange;
+}
+
+.answer h4 {
+    color: #01274b;
+}
+
+.answer p {
+    color: black;
+}
+
 .main-header-bar{
     background-color: white;
     position: relative;
