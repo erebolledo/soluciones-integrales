@@ -29,11 +29,11 @@
                     <div id="errorPass" class="error"></div>
                 </div>                
             </div>          
-            <div class="row" style="text-align: center; margin-top: 10px;">
+            <!--<div class="row" style="text-align: center; margin-top: 10px;">
                 <input type="checkbox" value="remember" id="remember" name="remember"> Recordarme
-            </div>
+            </div>-->
             <div class="row" style="text-align: center;">
-                <a href="<?php echo url('account/create')?>">Crear una cuenta</a> | <a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
+                <a href="<?php echo url('account/create')?>">Crear una cuenta</a><br><a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
             </div>          
             <button class="btn btn-lg btn-primary" style="width: 100%; float: none;" type="button" onclick="auth()">Entrar</button>
       </form>    
@@ -58,14 +58,14 @@
     function auth(){
         let email = document.getElementById('email').value;
         let password = document.getElementById('password').value;
-        let remember = "";
+        /*let remember = "";
         
         if (document.getElementById('remember').checked)
             remember = "remember";
         else
-            remember = "no remember";
+            remember = "no remember";*/
 
-        axios.post('/api/account/auth', {"email":email, "password":password, "remember": remember})
+        axios.post('/api/account/auth', {"email":email, "password":password})
         .then(function (response) {
             console.log(response);
             if (response.data === "no email"){

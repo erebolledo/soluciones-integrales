@@ -61,9 +61,17 @@ class AccountController extends Controller
         
         $data = $request->all();
         unset($data['_token']);
+        $token = hash_hmac('sha256', $data['email'], 'secret');
+        $data['token'] = $token;
+
         $user = Account::updateOrCreate($data);
-        $code = 1000+$user->id;
-        $user = Account::updateOrCreate(['id' => $user->id], ['code'=>$code]);
+        
+        Mail::send('account.email', ['user' => $user], function ($m) use ($user) {
+            $m->from('envios@soluciones-integrales.com.ve', 'Soluciones Integrales');
+            $m->to($user->email, $user->name)->subject('Bienvenido a Soluciones Integrales Envíos');
+        });                
+        //$code = 1000+$user->id;        
+        //$user = Account::updateOrCreate(['id' => $user->id], ['code'=>$code]);
                 
         session(['user'=>$user]);
         
@@ -107,16 +115,17 @@ class AccountController extends Controller
     
     /*
      * Funcion donde se inicializa la sesion de la cuenta en el sistema
+     * 
      */
     public function initSession(Request $request) {
         $email = $request->input('email');
         $password = $request->input('password');
-        $remember = $request->input('remember');
+        //$remember = $request->input('remember');
         $user = Account::where('email', $email)->first();
 
         session(['user'=>$user]);
         
-        if (!empty($remember)){
+        /*if (!empty($remember)){
             $token = md5($email).md5($password);
             Account::updateOrCreate(['id'=>$user->id], ['token' => $token]);        
             setcookie ("tokenCookie",$token,time()+ (10 * 365 * 24 * 60 * 60));            
@@ -124,7 +133,20 @@ class AccountController extends Controller
             $token = '';
             Account::updateOrCreate(['id'=>$user->id], ['token' => $token]);        
             setcookie ("tokenCookie",$token,time()+ (10 * 365 * 24 * 60 * 60));            
-        }
+        }*/
+        
+        return redirect('order/create');        
+    }
+
+    /*
+     * Funcion donde se inicializa la sesion de la cuenta en el sistema utilizando el token
+     * del cliente
+     * @parameters $token Es el token del cliente
+     * @result void
+     */
+    public function tokenLogin($token) {
+        $user = Account::where('token', $token)->first();        
+        session(['user'=>$user]);
         
         return redirect('order/create');        
     }
@@ -159,7 +181,6 @@ class AccountController extends Controller
 
         Mail::send('account.email', ['user' => $user], function ($m) use ($user) {
             $m->from('envios@soluciones-integrales.com.ve', 'Nuestra aplicacion con el nuevo dominio');
-
             $m->to('erkarebolledo@gmail.com', $user->name)->subject('prueba de correo');
         });        
     }

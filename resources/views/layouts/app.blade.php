@@ -101,7 +101,8 @@ die();*/
         <footer>
             <div class="footer width">
                 <div class="footer-text">
-                    Copyright © 2018 | Desarrollado por Soluciones Integrales
+                    Copyright&nbsp;©&nbsp;2018 | Desarrollado por Soluciones Integrales&nbsp;
+                    RIF:&nbsp;J-404421556
                 </div>                
             </div>  
         </footer>    

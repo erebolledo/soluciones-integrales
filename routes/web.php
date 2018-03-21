@@ -20,6 +20,7 @@ Route::get('/account/edit', function () {$user = session('user'); return view('a
 Route::post('/account/init-session/{token?}', 'AccountController@initSession');
 Route::get('/account/forgot', 'AccountController@forgot');
 Route::get('/account/logout',  function () {session()->flush(); session()->save(); return view('welcome');});
+Route::get('/account/token-login/{token}/', 'AccountController@tokenLogin');
 
 
 Route::get('/order/create', 'OrderController@create');
@@ -31,6 +32,7 @@ Route::get('/calculate', 'AccountController@calculate');
 Route::get('/support', function () {return view('support.support');});
 
 Route::any('/account/test', 'AccountController@test');
+Route::any('/email', function () {$user = session('user'); return view('account.email', ['user'=>$user]);});
 
 Route::get('/registry/{id?}', function ($id='-1') {return view('registry', ['id'=>$id]);});
 Route::get('/show', function () {return view('show');});

@@ -93,9 +93,7 @@
         <hr>
         <div style="background-color: #dfe9f1;border: 1px solid #b6bcc2;">
             <h3 style="text-align: center" id="openAccount">Abre una cuenta con nosotros, es totalmente gratis</h3>
-            <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}"/>
-            <input type="hidden" id="server" value="<?=Request::server('HTTP_HOST')?>"/>
-            <div id="root"><script src="<?= asset('js/RegForm.js')?>"></script></div>    
+            @include('account.form')        
         </div>
     </div>
 @endsection
