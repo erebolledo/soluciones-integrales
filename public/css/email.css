@@ -1,0 +1,29 @@
+.email-content {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    padding: 15px;
+}
+
+.email-row {
+    display: table;
+    width: 100%;
+}
+
+.header-left {
+    float: left;
+    width: 30%;
+}
+
+.header-right {
+    float: right;
+    text-align: right;
+}
+
+@media (max-width: 600px){
+    .email-content{
+        width: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
     <head>
         <title>Soluciones Integrales</title>
+        <link rel="icon" href="<?php echo asset('images/integralIcono.png')?>" sizes="192x192" />
         <noscript>Es necesario Javascrit para ejecutar esta aplicación.</noscript>
         <meta charset="utf-8">
         <link rel="stylesheet" href="<?php echo asset('css/email.css')?>" type="text/css">

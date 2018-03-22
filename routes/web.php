@@ -32,7 +32,7 @@ Route::get('/calculate', 'AccountController@calculate');
 Route::get('/support', function () {return view('support.support');});
 
 Route::any('/account/test', 'AccountController@test');
-Route::any('/email', function () {$user = session('user'); return view('account.email', ['user'=>$user]);});
+Route::any('/email', function () {$user = session('user'); return view('email.welcome', ['user'=>$user]);});
 
 Route::get('/registry/{id?}', function ($id='-1') {return view('registry', ['id'=>$id]);});
 Route::get('/show', function () {return view('show');});

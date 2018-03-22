@@ -66,7 +66,7 @@ class AccountController extends Controller
 
         $user = Account::updateOrCreate($data);
         
-        Mail::send('account.email', ['user' => $user], function ($m) use ($user) {
+        Mail::send('email.welcome', ['user' => $user], function ($m) use ($user) {
             $m->from('envios@soluciones-integrales.com.ve', 'Soluciones Integrales');
             $m->to($user->email, $user->name)->subject('Bienvenido a Soluciones Integrales Envíos');
         });                
