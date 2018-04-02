@@ -1,17 +1,4 @@
 <!-- Stored in resources/views/layouts/app.blade.php -->
-<?php 
-/*$values = [7,15,17,21];
-$nValues = count($values);
-$total=0;
-
-for($i=0;$i<$nValues;$i++){
-    $total+=$values[$i];
-}
-
-echo $total;
-
-die();*/
-?>
 <html lang="{{ app()->getLocale() }}">
     <head>
         <title>Soluciones Integrales</title>
@@ -57,12 +44,12 @@ die();*/
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="<?php echo url('/') ?>">Principal</a></li>
-                    <li><a href="<?php echo url('order/index') ?>">Cuenta</a></li>
-                    <li><a href="<?php echo url('account/create') ?>">Registrarse</a></li>                  
-                    <li><a href="<?php echo url('calculate') ?>">Calcular</a></li>
-                    <li><a href="<?php echo url('#') ?>" data-toggle="modal" data-target="#myModal">Datos envío</a></li>
-                    <li><a href="<?php echo url('support') ?>">Soporte</a></li>
+                    <li><a id ="main" href="<?php echo url('/') ?>">Principal</a></li>
+                    <li><a id ="default" href="<?php echo url('order/index') ?>">Cuenta</a></li>
+                    <li><a id="accountCreate" href="<?php echo url('account/create') ?>">Registrarse</a></li>                  
+                    <li><a id="calculate" href="<?php echo url('calculate') ?>">Calcular</a></li>
+                    <li><a id="" href="<?php echo url('#') ?>" data-toggle="modal" data-target="#myModal">Datos envío</a></li>
+                    <li><a id="support" href="<?php echo url('support') ?>">Soporte</a></li>
                     <?php if (!empty(session('user'))):?>
                         <li><a href="<?php echo url('account/logout') ?>"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
                     <?php endif;?>                     
@@ -83,12 +70,9 @@ die();*/
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content" style="background-color: lightyellow">
                         <div class="modal-body">
-                            <p>sagasg asasdgasdg</p>
-                            <p>asddsag sgagasg</p>
-                            <p>sagasg asasdgasdg</p>
-                            <p>asddsag sgagasg</p>                          
+                            @include('account.dataForSend')
                         </div>
                     </div>      
                 </div>
@@ -111,6 +95,45 @@ die();*/
     </body>
     <script>
         $( document ).ready(function() {
+            
+            /*
+             * Funcion que verifica en que pagina se encuentra y enmarca el item menu
+             * @type redirect.href|DOMString
+             */
+            let url = window.location.href; 
+
+            $("nav ul li a").each(function() {  
+                if (url == (this.href)) 
+                    $(this).css("outline", "5px auto -webkit-focus-ring-color");
+                else
+                    $(this).css("outline", "none");
+                    //$(this).closest("li").addClass("active");
+            });
+            
+            return false;
+            
+            /*let path = window.location.pathname;
+            console.log(path);
+            switch(path) {
+                case '/':
+                    $("#main").css("outline", "5px auto -webkit-focus-ring-color");
+                    break;
+                case '/account/create':    
+                    $("#accountCreate").css("outline", "5px auto -webkit-focus-ring-color");
+                    break;
+                case '/calculate':    
+                    $("#calculate").css("outline", "5px auto -webkit-focus-ring-color");
+                    break;
+                case '/support':    
+                    $("#support").css("outline", "5px auto -webkit-focus-ring-color");
+                    break;     
+                default:
+                    $("#default").css("outline", "5px auto -webkit-focus-ring-color");
+                $("#support").on('click', function () {
+                    $("#support").css("outline", "5px auto -webkit-focus-ring-color");
+                }); 
+            };*/
+            //$("#a").css("outline": "5px auto -webkit-focus-ring-color");
             //console.log($("#navMenu").height());
             //$('#section').css( "margin-top", $("#navMenu").height() + 50);
             //$('#section').height($("#navMenu").height() + 30);

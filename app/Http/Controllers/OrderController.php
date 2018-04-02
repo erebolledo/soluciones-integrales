@@ -29,7 +29,7 @@ class OrderController extends Controller
 
         //Si la session esta vacia devuelve la pantalla a login
         if (empty(session('user')))
-            return view('account.login');
+            return redirect('account/login');
         
         $user = session('user');
         $orders = array();        
@@ -72,7 +72,7 @@ class OrderController extends Controller
         
         //Si la session esta vacia devuelve la pantalla a login
         if (empty(session('user')))
-            return view('account.login');
+            return redirect('account/login');
         
         $user = session('user');
         $orders = array();

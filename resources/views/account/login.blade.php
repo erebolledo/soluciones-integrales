@@ -35,7 +35,7 @@
             <div class="row" style="text-align: center;">
                 <a href="<?php echo url('account/create')?>">Crear una cuenta</a><br><a href="<?php echo url('account/forgot') ?>">¿Olvidaste tu contraseña?</a>
             </div>          
-            <button class="btn btn-lg btn-primary" style="width: 100%; float: none;" type="button" onclick="auth()">Entrar</button>
+            <button id="btnSubmit" class="btn btn-lg btn-primary" style="width: 100%; float: none;" type="button" onclick="auth()">Entrar</button>
       </form>    
     </div>
 </div>    
@@ -49,7 +49,13 @@
             $('#password').on('keyup', function () {
                 $('#password').css( "background-color", "white" );
                 $('#errorPass').html('');
-            });                         
+            });       
+            
+            $('input').keypress(function(e) {
+                if(e.which === 13) {
+                    $('#btnSubmit').focus().click();
+                }
+            });              
         });            
     </script>    
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\CoronadoAccount;
 use App\DollarValue;
 use App\Account;
 use Mail;
@@ -66,12 +67,18 @@ class AccountController extends Controller
 
         $user = Account::updateOrCreate($data);
         
+        $coronadoAccount = CoronadoAccount::where('available', 1)->first();
+        $coronadoAccount->id_solinte = $user->id;
+        $coronadoAccount->available = 0;
+        $coronadoAccount->save();
+        
+        $user->code = $coronadoAccount->id_coronado;
+        $user->save();
+        
         Mail::send('email.welcome', ['user' => $user], function ($m) use ($user) {
             $m->from('envios@soluciones-integrales.com.ve', 'Soluciones Integrales');
             $m->to($user->email, $user->name)->subject('Bienvenido a Soluciones Integrales Envíos');
         });                
-        //$code = 1000+$user->id;        
-        //$user = Account::updateOrCreate(['id' => $user->id], ['code'=>$code]);
                 
         session(['user'=>$user]);
         
