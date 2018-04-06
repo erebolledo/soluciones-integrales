@@ -101,4 +101,30 @@ class OrderController extends Controller
         $order = Order::updateOrCreate($data);        
         return redirect('order/index/pending');
     }
+    
+    /*
+     * Funcion que cambia el estatus de una orden al siguiente estatus
+     */
+    public function changeStatus($id)
+    {
+        header('Access-Control-Allow-Origin: *');        
+        
+        $order = Order::find($id);
+        
+        switch ($order->status)
+        {
+            case 'pending':
+                $order->status='received';
+                $order->save();
+                break;
+            
+            case 'received':
+                $order->status='closed';
+                $order->save();
+                break;
+            
+            default:
+                break;
+        }                                    
+    }
 }

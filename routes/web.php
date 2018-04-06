@@ -35,6 +35,7 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/login', function () {return view('admin.login');});
 Route::post('/admin/init-session', 'AdminController@initSession');
 Route::get('/admin/id-coronado', function () {return view('admin.idCoronado');});
+Route::get('/admin/list', function () {return view('admin.list');});
 Route::post('/admin/store-id-coronado', 'AdminController@storeIdCoronado');
 Route::get('/admin/logout', 'AdminController@logout');
 

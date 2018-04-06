@@ -56,42 +56,28 @@ class AdminController extends Controller {
         if (empty(session('admin')))
             return redirect('admin/login');
         
-        die('esta iniciada la sesion');
-        
-        $start = $request->input('start');
-        $limit = $request->input('limit');   
-        $search = $request->input('search');           
+        return redirect('admin/list');
+    }
+    
+    /*
+     * Funcion para listar las ordenes con los requests que sean pasados por parametros
+     */
+    public function orders(Request $request)
+    {                
+        header('Access-Control-Allow-Origin: *');        
+        $search = $request->input('search');
+        $orderBy = $request->input('order_by');
         $requestArray = $request->all();
         
-        if (array_key_exists('start', $requestArray))
-            unset($requestArray['start']);
-      
-        if (array_key_exists('limit', $requestArray))
-            unset($requestArray['limit']);
-            
         if (array_key_exists('search', $requestArray))
             unset($requestArray['search']);
-                
-        $start = (!$start)?0:$start;
-        $limit = (!$limit)?30:$limit;
-	
-        if ((!is_numeric($start))||($start<0))
-        {
-            return response()
-                    ->json(['errors'=>array(['code'=>400,
-                        'message'=>'El parámetro start debe ser un entero mayor o igual a 0.'])], 400)            
-                    ->header('Content-Type', 'application/json');
-        }
-
-        if ((!is_numeric($limit))||($limit<0)||($limit>31))
-        {
-            return response()
-                    ->json(['errors'=>array(['code'=>400,
-                        'message'=>'El parametro límit debe ser un entero y estar entre 0 y 30.'])], 400)            
-                    ->header('Content-Type', 'application/json');
-        }
         
-        $queryFormer = "select * from leads.leads";        
+        if (array_key_exists('order_by', $requestArray))
+            unset($requestArray['order_by']);        
+                
+        $queryFormer = "SELECT a.id AS id_account, a.code, a.name, a.email, "
+                . "o.id as id_order, o.n_order, o.status, o.n_tracking FROM orders as o INNER JOIN accounts as a "
+                . "ON o.id_user=a.id";    
 
         if (!empty($search)){
             $queryFormer .= " where Concat_WS('',name,phonePrimary,phoneSecondary,mobile,email, company,source, industry, country) "
@@ -108,12 +94,11 @@ class AdminController extends Controller {
             }
         }
 
-        $queryFormer .= " order by id desc";
-        $queryFormer .= " limit $start,$limit";        
+        $queryFormer .= " order by $orderBy asc";
 
-        $leads = DB::select($queryFormer);
+        $orders = DB::select($queryFormer);
         
-        return $leads;
+        return $orders;        
     }
     
     /*
