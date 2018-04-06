@@ -34,7 +34,7 @@ Route::get('/support', function () {return view('support.support');});
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/login', function () {return view('admin.login');});
 Route::post('/admin/init-session', 'AdminController@initSession');
-Route::get('/admin/id-coronado', function () {return view('admin.idCoronado');});
+Route::get('/admin/id-coronado', function () {$ids = App\CoronadoAccount::where('available', 1)->get(); return view('admin.idCoronado', ['ids'=>$ids]);});
 Route::get('/admin/list', function () {if (empty(session('admin'))) return redirect('admin/login'); return view('admin.list');});
 Route::post('/admin/store-id-coronado', 'AdminController@storeIdCoronado');
 Route::get('/admin/logout', 'AdminController@logout');

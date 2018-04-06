@@ -55,7 +55,7 @@ class AdminController extends Controller {
     {
         if (empty(session('admin')))
             return redirect('admin/login');
-        
+
         return redirect('admin/list');
     }
     
