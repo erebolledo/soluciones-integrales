@@ -10,3 +10,44 @@ form
     padding: 20px;
     border-radius: 5px;
 }
+
+.button-table
+{
+    margin: 3px;
+    width: 60px;
+}
+
+tr th
+{
+    text-align: center;
+}
+
+.input-filter-small
+{
+    width: 60px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.input-filter-medium
+{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.glyphicon {
+    line-height: inherit;
+}
+
+thead{    
+    background: linear-gradient(#dacbcb, white);
+}
+
+.small {
+    font-size: 80%;
+}
