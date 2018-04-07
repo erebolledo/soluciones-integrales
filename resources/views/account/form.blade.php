@@ -104,8 +104,7 @@
 
         $("#idName").on('change', function () {
             let name = $('#idName').val();
-            $('#idName').val($('#idName').val().toUpperCase());
-            registryDisabled();
+            $('#idName').val($('#idName').val().toUpperCase());            
         });        
 
         $("#idEmail").on('change', function () {
@@ -130,29 +129,68 @@
                     $('#errorEmail').html('');                                                    
                 }
             });            
-
-            registryDisabled();
-        });        
-
-        $("#idPass").on('change', function () {
-            registryDisabled();
         });        
         
         $("#regForm").submit(function () {
             var verify = registryDisabled();
             if (!verify)
-                alert('Favor revise los errores en el formulario');
+            {
+                $('#message').html('<div class="alert alert-danger"><strong>Error:</strong> Favor revisa los errores en el formulario.</div>');
+            }
 
             return verify;
         });        
         
-        //Habilitar boton de guardar
         var registryDisabled = function() {
-            if (($('#idName').val()) && $('#idEmail').val() && $('#idPass').val() && $('#errorEmail').html()===''){
-                //$('#save').prop('disabled', false);                
+            if (($('#idName').val()) && $('#idEmail').val() && $('#idPass').val() && $('#errorEmail').html()==='')
+            {
                 return true;
-            }else{
-                //$('#save').prop('disabled', true);
+            }
+            else
+            {
+                if (!$('#idName').val())
+                {
+                    $('#idName').css( "background-color", "yellow" );
+                    $('#idName').focus();
+                    $('#errorName').html('El campo Nombre es requerido');
+                    
+                    return false;
+                }
+                else
+                {
+                    $('#idName').css( "background-color", "white" );
+                    $('#errorName').html('');                    
+                }
+                
+                if (!$('#idEmail').val())
+                {
+                    $('#idEmail').css( "background-color", "yellow" );
+                    $('#idEmail').focus();
+                    $('#errorEmail').html('El campo Email es requerido');
+                    
+                    return false;
+                }                
+                else
+                {
+                    $('#idEmail').css( "background-color", "white" );
+                    $('#errorEmail').html('');
+                    
+                }
+                
+                if (!$('#idPass').val())
+                {
+                    $('#idPass').css( "background-color", "yellow" );
+                    $('#idPass').focus();
+                    $('#errorPass').html('El campo Contraseña es requerido');
+                    
+                    return false;
+                }                          
+                else
+                {
+                    $('#idPass').css( "background-color", "white" );
+                    $('#errorPass').html('');                    
+                }
+                
                 return false;
             }
         };                

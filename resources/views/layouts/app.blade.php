@@ -67,6 +67,7 @@
             </nav>
         </header>
         <section class="main-content width" id="section">
+            <div id = "message"></div>
             <!-- Modal -->
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
