@@ -127,6 +127,38 @@ class AdminController extends Controller {
         session()->flush();
         session()->save();
         return redirect('admin/login');
-    }        
+    }   
+    
+    /*
+     * Funcion para parsear los codigos de coronados
+     */
+    public function parseCoronado(Request $request)
+    {
+        $content = $request->input('content');
+        $array = explode('</b></font></p>', $content);        
+        $codes = [];
+        $i = 0;
+        
+        foreach ($array as $split)
+        {
+            $code = explode('<b>CONSIGNEE: ', $split);
+            $codes[] = $code[1];
+
+            $coronadoAccount = CoronadoAccount::where('id_coronado', $code[1])->first();
+
+            if (empty($coronadoAccount))
+            {        
+                $data = ['id'=>NULL, 'id_solinte'=>0,  'id_coronado'=>$code[1], 'available'=>1]; 
+                $coronadoAccount = new CoronadoAccount($data);                
+                $res=$coronadoAccount->save();                
+            }
+            
+            $i++;            
+            
+            if ($i===count($array)-1)
+                break;            
+        }
+        return $codes;
+    }
 }
 ?>

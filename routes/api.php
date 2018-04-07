@@ -22,7 +22,9 @@ Route::post('/account/auth', 'AccountController@auth');
 Route::get('/account/exist/{email}', 'AccountController@exist');
 Route::get('/account/get/{id}', 'AccountController@get');
 Route::get('/admin/orders', 'AdminController@orders');
+Route::post('/admin/parse-coronado', 'AdminController@parseCoronado');
 Route::get('/order/change-status/{id}', 'OrderController@changeStatus');
+Route::get('/account/test', 'AccountController@test');
 
 Route::get('/account/get-dollar-value', 'AccountController@getDollarValue');
 

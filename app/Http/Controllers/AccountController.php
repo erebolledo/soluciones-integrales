@@ -221,6 +221,51 @@ class AccountController extends Controller
     
     public function test(){
         $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', 'http://s6.stephytrackingonline.com/CoronadoExpress/Agents/Header/AgentLogin.asp', [
+            'form_params' => [
+                'UserID' => '207',
+                'UserPassword' => 'si1234',
+            ]
+        ]);
+        
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', 'http://s6.stephytrackingonline.com/CoronadoExpress/Agents/Apps/Customers/InAddCustomer.asp', [
+            'form_params' => [
+                'Name' => 'SI',
+                'Add1' => 'caracas',
+                'Ciudad' => 'caracas',
+                'Pais' => 'venezuela',
+                'Phone1' => '04166424326',
+                'Email' => 'erkarebolledo@gmail.com',
+                'AgentID' => '207',
+                'SetRepack' => 'Yes',
+                'Complete' => 'No',
+                'Destino' => 'CCS',
+                'PoBox' => '0',
+                'ServiceType' => '-1',                
+                'CountryID' => '0',
+                'StatusID' => '2',
+                'LanguageID' => '2',                
+                'Password' => 'si1234',
+                'Out' => '',
+                'Type' => 'C',                
+                'Save' => '1',
+                'Terms' => '0',
+                'Ins' => 'N',                                
+                'InsRat' => '0',
+                'Class' => '0',
+                'Special' => '0',                
+                'AirCurrenc' => '',
+                'MarClass' => '0',
+                'MarSpecial' => '0',                                                
+                'OceanCurrency' => '',                                                               
+            ]
+        ]);        
+        
+        die('listo');
+        die(print_r($response));
+        
+        $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'https://twitter.com/dolartoday?lang=es');
         $page = $res->getBody()->getContents();
         $page = explode('el $ cotiza a Bs. ', $page);        
