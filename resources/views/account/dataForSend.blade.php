@@ -6,5 +6,5 @@
 <p><strong>City:</strong> HIALEAH GARDENS </p>
 <p><strong>State:</strong> Fl</p> 
 <p><strong>Zip Code:</strong> 33016</p> 
-<p><strong>Country:</strong> United State</p> 
+<p><strong>Country:</strong> United States</p> 
 <p><strong>Phone Number:</strong> 786-3586303</p>
