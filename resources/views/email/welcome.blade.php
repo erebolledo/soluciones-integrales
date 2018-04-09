@@ -32,7 +32,7 @@
             </p>                                
             <br>
             <p style="text-align: center">
-                También puedes acceder directamente a tu cuenta haciendo click en este botón:
+                Guarda este correo y accede directamente a tu cuenta haciendo click en este botón:
             </p>
             <p style="text-align: center">
                 <a href="http://{{request()->getHttpHost()}}/account/token-login/{{$user->token}}">
