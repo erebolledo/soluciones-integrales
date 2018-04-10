@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!--<h3>ENVIOS SOLUCIONES INTEGRALES </h3>-->
-    <div id="myCarousel" class="carousel slide" style="padding: 0px !important;">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="padding: 0px !important;">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -57,6 +57,28 @@
           <span class="glyphicon glyphicon-chevron-right"></span>
           <span class="sr-only">Next</span>
         </a>            
+    </div>
+    <hr>
+    <div class="container-fluid content">
+        <div class="orange-box">
+            <div class="row" style="text-align: center">            
+                <div class="col-sm-12 col-md-6">
+                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span> ENVIOS AEREOS Y MARITIMOS DESDE MIAMI A VENEZUELA</h3>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span> EL MEJOR PRECIO DEL MERCADO, SIN PESO MINIMO</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center">
+                    <h3>
+                        <span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;
+                        <span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp; 
+                        LA MEJOR OPCION PARA SUS COMPRAS                    
+                    </h3>
+                </div>            
+            </div>
+        </div>                    
     </div>
     <hr>
     <div class="container-fluid content">

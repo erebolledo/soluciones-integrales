@@ -324,3 +324,9 @@ label {
     height: 30px;
 }
 
+.orange-box {
+    background-color: orange;
+    border: 1px solid darkorange;
+    padding: 15px;
+}
+
