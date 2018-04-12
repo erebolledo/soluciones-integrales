@@ -61,7 +61,7 @@
                <label>Estado</label>
              </div>
              <div class="col-50">
-               <input type="text" name="state" placeholder="Estado de entrega"/>
+               <input type="text" id="state" name="state" placeholder="Estado para la entrega"/>
              </div>
            </div>                        
            <div class="row">
@@ -69,7 +69,7 @@
                <label>Ciudad</label>
              </div>
              <div class="col-50">
-               <input type="text" id="lCity" name="city" ref="city" placeholder="Ciudad de entrega"/>
+               <input type="text" id="city" name="city" ref="city" placeholder="Ciudad para la entrega"/>
              </div>
            </div>        
            <div class="row">
@@ -77,7 +77,7 @@
                <label>Dirección detallada</label>
              </div>
              <div class="col-50">
-               <textarea id="lDeliverAddress" name="address" ref="address" placeholder="Dirección exacta de entrega"></textarea>            
+               <textarea id="address" name="address" ref="address" placeholder="Dirección exacta de entrega"></textarea>            
              </div>
            </div>        
            <div class="row">
@@ -102,11 +102,31 @@
                 $('#idPass').attr('type', 'password');            
         });         
 
+        //Colocar nombre en mayusculas
         $("#idName").on('change', function () {
             let name = $('#idName').val();
             $('#idName').val($('#idName').val().toUpperCase());            
         });        
+        
+        //Colocar estado en mayusculas
+        $("#state").on('change', function () {
+            let name = $('#state').val();
+            $('#state').val($('#state').val().toUpperCase());            
+        });                
+        
+        //Colocar ciudad en mayusculas
+        $("#city").on('change', function () {
+            let name = $('#city').val();
+            $('#city').val($('#city').val().toUpperCase());            
+        });                
+        
+        //Colocar direccion en mayusculas
+        $("#address").on('change', function () {
+            let name = $('#address').val();
+            $('#address').val($('#address').val().toUpperCase());            
+        });                        
 
+        //Verificacion de fecha
         $("#idEmail").on('change', function () {
             let email = $("#idEmail").val();
             let nameServer = $("#server").val();
