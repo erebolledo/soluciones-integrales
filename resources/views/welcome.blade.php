@@ -61,22 +61,16 @@
     <hr>
     <div class="container-fluid content">
         <div class="orange-box">
-            <div class="row" style="text-align: center">            
-                <div class="col-sm-12 col-md-6">
-                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span> ENVIOS AEREOS Y MARITIMOS DESDE MIAMI A VENEZUELA</h3>
+            <div class="row">            
+                <div class="col-sm-12">
+                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;ENVÍOS AÉREOS Y MARÍTIMOS DESDE MIAMI A VENEZUELA</h3>
                 </div>
-                <div class="col-sm-12 col-md-6">
-                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span> EL MEJOR PRECIO DEL MERCADO, SIN PESO MINIMO</h3>
+                <div class="col-sm-12">
+                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;EL MEJOR PRECIO DEL MERCADO, SIN PESO MÍNIMO</h3>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12" style="text-align: center">
-                    <h3>
-                        <span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;
-                        <span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp; 
-                        LA MEJOR OPCION PARA SUS COMPRAS                    
-                    </h3>
-                </div>            
+                <div class="col-sm-12">
+                    <h3><span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;LA MEJOR OPCIÓN PARA SUS COMPRAS</h3>                    
+                </div>
             </div>
         </div>                    
     </div>
