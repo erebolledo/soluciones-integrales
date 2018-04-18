@@ -26,6 +26,7 @@ Route::get('/account/token-login/{token}/', 'AccountController@tokenLogin');
 Route::get('/order/create', 'OrderController@create');
 Route::post('/order/store', 'OrderController@store');
 Route::get('/order/index/{status?}', 'OrderController@index');
+Route::get('/order/tracking', function () {$user = session('user'); return view('order.tracking', ['name'=>$user->name]);});
 
 Route::get('/calculate', 'AccountController@calculate');
 

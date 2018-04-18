@@ -78,6 +78,7 @@ class AccountController extends Controller
         Mail::send('email.welcome', ['user' => $user], function ($m) use ($user) {
             $m->from('envios@soluciones-integrales.com.ve', 'Soluciones Integrales');
             $m->to($user->email, $user->name)->subject('Bienvenido a Soluciones Integrales Envíos');
+            $m->bcc('envios@soluciones-integrales.com.ve', 'Soluciones Integrales')->subject('Nuevo cliente');
         });                
                 
         session(['user'=>$user]);
@@ -221,12 +222,16 @@ class AccountController extends Controller
     
     public function test(){
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('POST', 'http://s6.stephytrackingonline.com/CoronadoExpress/Agents/Header/AgentLogin.asp', [
+        
+        $response = $client->request('POST', 'http://s6.stephytrackingonline.com/CoronadoExpress/Agents/Header/AgentCheck.asp', [
+            'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
             'form_params' => [
                 'UserID' => '207',
                 'UserPassword' => 'si1234',
-            ]
+            ]                        
         ]);
+        die('asdasd');
+        die(print_r($response->getHeaders()));
         
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', 'http://s6.stephytrackingonline.com/CoronadoExpress/Agents/Apps/Customers/InAddCustomer.asp', [

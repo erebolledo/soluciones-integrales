@@ -14,9 +14,36 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="<?php echo asset('css/style.css')?>" type="text/css">
         <link rel="stylesheet" href="<?php echo asset('css/form.css')?>" type="text/css">        
         <link rel="icon" href="<?php echo asset('images/integralIcono.png')?>" sizes="192x192" />
+        
+        <style>
+            .btn-social{
+                margin-bottom: 5px; 
+                width: 200px;
+                float: none; 
+                color: white;                
+                text-align: left;    
+            }
+            
+            .social-icon {
+                padding: 20px;
+                font-size: 30px;
+                width: 70px;
+                text-align: center;
+                text-decoration: none;
+                margin: 5px 2px;
+                color: white;
+                border-radius: 50%;
+            }
+
+            .social-icon:hover {
+                opacity: 0.7;
+                color: black;
+            }            
+        </style>
     </head>
     <body>
         <div>
@@ -83,14 +110,24 @@
                 @yield('content')
             </div>
         </section>
-        <footer>
-            <div class="footer width">
-                <div class="footer-text">
+        <footer class="width footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 style="color: white">Siguenos en nuestras redes sociales</h4>                    
+                    <a href="#" class="social-icon fa fa-facebook" style="background-color: #3B5998"></a>
+                    <a href="#" class="social-icon fa fa-twitter" style="background-color: #55ACEE"></a>
+                    <a href="#" class="social-icon fa fa-instagram" style="background-color: #125688"></a>                    
+                </div>
+            </div>
+        </footer> 
+        <div class="footer width" style="background-color: #021d38;">
+            <div> 
+                <div class="" style="text-align: center">
                     Copyright&nbsp;©&nbsp;2018 | Desarrollado por Soluciones Integrales&nbsp;
                     RIF:&nbsp;J-404421556
-                </div>                
-            </div>  
-        </footer>    
+                </div>                                                    
+            </div>
+        </div>            
     </div>
         
     </body>

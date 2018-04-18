@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row">
-      <label class="col-25">Número de Tracking:</label>
+      <label class="col-25">Número de tracking:</label>
       <div class="col-50">          
         <input class="form-control" id="n_tracking" placeholder="Introduzca el número de tracking" name="n_tracking">
       </div>

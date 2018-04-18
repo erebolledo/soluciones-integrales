@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Order;
 use App\Package;
+use GuzzleHttp\Client;
 
 class OrderController extends Controller
 {
@@ -94,11 +95,15 @@ class OrderController extends Controller
         $user = session('user');
         unset($data['_token']);
         
-        $data['buyed']= date_format(date_create_from_format("d/m/Y",$data['buyed']),"Y-m-d");
+        $data['buyed'] = (!empty($data['buyed']))?date_format(date_create_from_format("d/m/Y",$data['buyed']),"Y-m-d"):NULL;
         $data['id_user'] = $user->id;
         $data['status'] = 'pending';
-
+        $data['n_order'] = (empty($data['n_order']))?NULL:$data['n_order'];
+        $data['n_tracking'] = (empty($data['n_tracking']))?NULL:$data['n_tracking'];
+        $data['observations'] = (empty($data['observations']))?NULL:$data['observations'];
+        
         $order = Order::updateOrCreate($data);        
+        
         return redirect('order/index/pending');
     }
     
@@ -126,5 +131,34 @@ class OrderController extends Controller
             default:
                 break;
         }                                    
+    }
+    
+    public function getTracking($tracking)
+    {
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('POST', 'http://s6.stephytrackingonline.com/CoronadoExpress/MainWebsite.asp', [
+            'form_params' => [
+                'Data' => $tracking,
+                'Go' => '1',
+                'ID' => $tracking.'|',
+                'Type' => 'T'
+            ]
+        ]);  
+        
+        $page = $res->getBody()->getContents();
+        $page = explode("<hr color='#CCCCCC' size='1'>", $page);
+        $page = explode("</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></table>", $page[1]);        
+        
+        if (!empty($page[0]))
+        {
+            $page = explode("&nbsp;", $page[0]);
+            
+            if ($page[1]==="Not received / Found")
+                return "<p style='background-color:yellow;'><strong>EL PAQUETE NO HA SIDO RECIBIDO EN NUESTRAS OFICINAS.</strong></p>";
+            else
+                return $page[1];            
+        }            
+
+        return 'NO SE PUDO TRACKEAR EL PAQUETE, FAVOR NOTIFICAR AL ADMINISTRADOR';            
     }
 }

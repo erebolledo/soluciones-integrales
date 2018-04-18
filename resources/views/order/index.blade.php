@@ -3,7 +3,6 @@
 @section('content')
 <?php 
     $name = $user->name;//explode(' ', $user->name);
-    //$name = $name[0];
 ?>
     <div class="content">
         @include('order.indexBar')
@@ -24,7 +23,7 @@
             ?>
             <div class="box">
                 <div class="row"><label>Identificador del paquete: </label>{{$idOrder}}</div>
-                <div class="row"><label>Número de orden: </label><?=$order->n_order ?></div>
+                <div class="row"><label>Número de orden: </label><?=(empty($order->n_order))?"---":$order->n_order?></div>
                 <div class="row"><label>Número de tracking: </label><?=(empty($order->n_tracking))?"---":$order->n_tracking?></div>
                 <div class="row"><label>Origen: </label><?=(empty($order->store))?"---":$order->store?></div>
                 <div class="row"><label>Fecha de compra: </label><?=$dateBuyed?></div>
@@ -33,7 +32,7 @@
             <?php endforeach;?>       
         </div>        
     </div>    
-    <script>        
+    <script>    
         document.getElementById('<?=$status?>').innerHTML = '<?=$statusName?>';
     </script>    
 @endsection
