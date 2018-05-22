@@ -76,7 +76,7 @@ class AccountController extends Controller
         $user->save();
         
         Mail::send('email.welcome', ['user' => $user], function ($m) use ($user) {
-            $m->from('envios@soluciones-integrales.com.ve', 'Soluciones Integrales');
+            $m->from('auto@soluciones-integrales.com.ve', 'Soluciones Integrales');
             $m->to($user->email, $user->name)->subject('Bienvenido a Soluciones Integrales Envíos');
             $m->bcc('envios@soluciones-integrales.com.ve', 'Soluciones Integrales')->subject('Nuevo cliente');
         });                

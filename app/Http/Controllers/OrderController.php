@@ -8,9 +8,11 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Account;
 use App\Order;
 use App\Package;
 use GuzzleHttp\Client;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -39,7 +41,8 @@ class OrderController extends Controller
             case 'pending':
                 $subtitle = 'Paquetes pendientes por entregar';
                 $statusName='<p style="color: orange; margin:0;">Paquetes pendientes</p>';  
-                $queryFormer = "SELECT * FROM orders WHERE id_user=".$user->id." and (status LIKE 'pending' or status LIKE 'received') ORDER BY `orders`.`status` DESC, `orders`.`created_at` DESC";
+                $queryFormer = "SELECT * FROM orders WHERE id_user=".$user->id." and (status LIKE 'pending' or status LIKE 'received' or status LIKE 'invoiced') "
+                        . "ORDER BY `orders`.`status` DESC, `orders`.`created_at` DESC";
                 $orders = DB::select($queryFormer);
                 //$status = "Paquete pendiente";
                 break;
@@ -102,7 +105,13 @@ class OrderController extends Controller
         $data['n_tracking'] = (empty($data['n_tracking']))?NULL:$data['n_tracking'];
         $data['observations'] = (empty($data['observations']))?NULL:$data['observations'];
         
-        $order = Order::updateOrCreate($data);        
+        $order = Order::updateOrCreate($data);
+
+        Mail::send('email.newOrder', ['user' => $user, 'order'=>$order], function ($m) use ($user, $order) {
+            $m->from('auto@soluciones-integrales.com.ve', 'Soluciones Integrales');
+            $m->to($user->email, $user->name)->subject('Orden número '.$order->id);
+            $m->bcc('envios@soluciones-integrales.com.ve', 'Soluciones Integrales')->subject('Orden número '.$order->id);            
+        });                      
         
         return redirect('order/index/pending');
     }
@@ -160,5 +169,74 @@ class OrderController extends Controller
         }            
 
         return 'NO SE PUDO TRACKEAR EL PAQUETE, FAVOR NOTIFICAR AL ADMINISTRADOR';            
+    }
+    
+    /*
+     * Funcion para dar la orden por recibida en las oficinas de coronados
+     */
+    public function receipt(Request $request)
+    {
+        header('Access-Control-Allow-Origin: *');        
+        $data = $request->all();
+        
+        foreach ($data as $index => $field)
+        {
+            if ($index!=='description')
+            {                
+                $data[$index] = str_replace(',', '.', $field);
+            }
+        }        
+        
+        $order = Order::find($request->input('id'));
+        $order->weight = $data['weight'];
+        $order->vol_weight = $data['vol_weight'];
+        $order->width = $data['width'];
+        $order->large = $data['large'];
+        $order->high = $data['high'];
+        $order->description = (empty($data['description']))?NULL:$data['description'];
+        $order->pieces = $data['pieces'];
+        $order->num_receipt = $data['num_receipt'];
+        $order->status='received';
+
+        $order->save();        
+        
+        $user = Account::find($order->id_user);
+        
+        Mail::send('email.receiptOrder', ['user' => $user, 'order'=>$order], function ($m) use ($user, $order) {
+            $m->from('auto@soluciones-integrales.com.ve', 'Soluciones Integrales');
+            $m->to($user->email, $user->name)->subject('Soluciones Integrales orden # '.$order->id.' recibida');
+        });                              
+    }
+    
+    /*
+     * Funcion para generar la factura
+     */
+    public function invoice(Request $request)
+    {
+        header('Access-Control-Allow-Origin: *');        
+        $data = $request->all();
+        
+        $order = Order::find($request->input('id'));
+        $order->price = str_replace(',', '.', $data['price']);
+        $order->status='invoiced';
+        $order->save();
+        
+        $user = Account::find($order->id_user);
+
+        Mail::send('email.invoiceOrder', ['user' => $user, 'order'=>$order], function ($m) use ($user, $order) {
+            $m->from('auto@soluciones-integrales.com.ve', 'Soluciones Integrales');
+            $m->to($user->email, $user->name)->subject('Soluciones Integrales orden # '.$order->id.' recibida');
+        });                                      
+    }
+    
+    /*
+     * Funcion para obtener la data de determinada orden
+     */
+    public function get($id)
+    {
+        header('Access-Control-Allow-Origin: *');                
+        $order = Order::find($id);
+        
+        return $order;
     }
 }
