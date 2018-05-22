@@ -25,7 +25,10 @@ Route::get('/admin/orders', 'AdminController@orders');
 Route::post('/admin/parse-coronado', 'AdminController@parseCoronado');
 Route::get('/order/change-status/{id}', 'OrderController@changeStatus');
 Route::get('/account/test', 'AccountController@test');
+Route::post('/order/receipt', 'OrderController@receipt');
 Route::get('/order/get-tracking/{tracking}', 'OrderController@getTracking');
+Route::get('/order/get/{id}', 'OrderController@get');
+Route::post('/order/invoice', 'OrderController@invoice');
 
 Route::get('/account/get-dollar-value', 'AccountController@getDollarValue');
 

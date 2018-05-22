@@ -26,6 +26,7 @@ Route::get('/account/token-login/{token}/', 'AccountController@tokenLogin');
 Route::get('/order/create', 'OrderController@create');
 Route::post('/order/store', 'OrderController@store');
 Route::get('/order/index/{status?}', 'OrderController@index');
+Route::get('/order/receipt/{id}', function ($id) {return view('order.receipt', ['id'=>$id]);});
 Route::get('/order/tracking', function () {$user = session('user'); return view('order.tracking', ['name'=>$user->name]);});
 
 Route::get('/calculate', 'AccountController@calculate');
@@ -41,7 +42,7 @@ Route::post('/admin/store-id-coronado', 'AdminController@storeIdCoronado');
 Route::get('/admin/logout', 'AdminController@logout');
 
 Route::any('/account/test', 'AccountController@test');
-Route::any('/email', function () {$user = session('user'); return view('email.welcome', ['user'=>$user]);});
+Route::any('/email', function () {return view('email.receiptOrder');});
 
 Route::get('/registry/{id?}', function ($id='-1') {return view('registry', ['id'=>$id]);});
 Route::get('/show', function () {return view('show');});
