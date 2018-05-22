@@ -48,7 +48,7 @@
     <body>
         <div>
         <header class="width">
-            <nav class="navbar navbar-default width" id="navMenu" style="padding: 14px">
+            <nav class="navbar navbar-default top-nav-collapse width" id="navMenu" style="padding: 14px">
               <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" 
@@ -114,9 +114,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h4 style="color: white">Siguenos en nuestras redes sociales</h4>                    
-                    <a href="#" class="social-icon fa fa-facebook" style="background-color: #3B5998"></a>
-                    <a href="#" class="social-icon fa fa-twitter" style="background-color: #55ACEE"></a>
-                    <a href="#" class="social-icon fa fa-instagram" style="background-color: #125688"></a>                    
+                    <a href="#" target="_blank" class="social-icon fa fa-facebook" style="background-color: #3B5998"></a>
+                    <a href="#" target="_blank" class="social-icon fa fa-twitter" style="background-color: #55ACEE"></a>
+                    <a href="#" target="_blank" class="social-icon fa fa-instagram" style="background-color: #125688"></a>                    
                 </div>
             </div>
         </footer> 

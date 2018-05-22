@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<script src="<?php echo asset('js/float-panel.js')?>"></script>
+<link rel="stylesheet" href="<?php echo asset('css/slide.css')?>" type="text/css">        
+
     <!--<h3>ENVIOS SOLUCIONES INTEGRALES </h3>-->
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="padding: 0px !important;">
         <!-- Indicators -->
@@ -62,13 +65,13 @@
     <div class="container-fluid content">
         <div class="orange-box z-depth-5">
             <div class="row">            
-                <div class="col-sm-12">
+                <div class="col-sm-12 slideanim">
                     <h3><span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;ENVÍOS AÉREOS Y MARÍTIMOS DESDE MIAMI A VENEZUELA</h3>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 slideanim">
                     <h3><span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;EL MEJOR PRECIO DEL MERCADO, SIN PESO MÍNIMO</h3>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 slideanim">
                     <h3><span class="glyphicon glyphicon-ok" style="color:green"></span>&nbsp;LA MEJOR OPCIÓN PARA SUS COMPRAS</h3>                    
                 </div>
             </div>
@@ -77,7 +80,7 @@
     <hr>
     <div class="container-fluid content">
         <div class="row" style="background-color: #01274b;">            
-            <div class="col-sm-12 col-md-6" style="color: white">
+            <div class="col-sm-12 col-md-6 slideanim" style="color: white">
                 <h3 style="text-align: center; color: white;">Dirección en miami</h3>
                 <p>
                     9802 NW 80th av. G47 Hialeah Gardens Fl, 33016                
@@ -90,11 +93,11 @@
                     ¿No posee una cuenta? <a href="<?php echo url('account/create')?>">Registrate aquí</a>.
                 </p>
             </div>            
-            <div class="col-sm-12 col-md-6" style="color: white">
+            <div class="col-sm-12 col-md-6 slideanim" style="color: white">
                 <h3 style="text-align: center; color: white;">Contáctanos</h3>
                 <p>
                     Si necesita información, quiere plantearnos una inquietud o simplemente ponerse en contacto con nosotros, puede escribirnos al correo 
-                    <strong>solucionesintegrales1609@gmail.com</strong>
+                    <a href="mailto:envios@soluciones-integrales.com.ve?Subject=Soporte"><strong>envios@soluciones-integrales.com.ve</strong></a>
                 </p>
                 <p>
                     También puede contactarnos vía telefónica por los teléfonos: 
@@ -107,7 +110,7 @@
             </div>            
         </div>
         <hr>
-        <div style="background-color: #dfe9f1;border: 1px solid #b6bcc2;">
+        <div class="" style="background-color: #dfe9f1;border: 1px solid #b6bcc2;">
             <h3 style="text-align: center" id="openAccount">Abre una cuenta con nosotros, es totalmente gratis</h3>
             @include('account.form')        
         </div>

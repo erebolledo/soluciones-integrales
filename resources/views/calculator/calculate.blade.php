@@ -79,7 +79,7 @@
                         </div>
                         <div class="select-input">
                             <select class="form-control" id="moneyUnit" style="height:46px">
-                                <option>BsF</option>
+                                <!--<option>BsF</option>-->
                                 <option>$</option>
                             </select>
                         </div>

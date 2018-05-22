@@ -68,7 +68,7 @@
                 padding: 20px;
             }
             table.body-wrap .container {
-                border: 1px solid #f0f0f0;
+                border: 1px solid #b6bcc2;
             }
             table.footer-wrap {
                 width: 100%;
@@ -129,7 +129,7 @@
             
             .data-box {
                 width: 100%;
-                background-color: #dfe9f1;
+                background-color: #f5f6f7;
                 border-radius: 5px;
                 padding: 5px 10px;
                 border: 1px solid #01274b;
@@ -147,7 +147,7 @@
                             <tr valign="top">
                                 <td align="left">
                                     <a href="http://{{request()->getHttpHost()}}">
-                                        <img src="http://envios.soluciones-integrales.com.ve/images/cropped-integral-logo-envios.png" width="250px">
+                                        <img src="http://envios.soluciones-integrales.com.ve/images/cropped-integral-logo-envios.png" width="150px">
                                     </a><br>
                                     RIF J-404421556
                                 </td>

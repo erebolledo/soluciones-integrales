@@ -3,6 +3,7 @@
     <a href="<?php echo url('account/edit')?>" title="Editar datos del usuario"><img src="<?php echo asset('images/20344-200.png') ?>" width="40px" height="40px" style="margin-left: 5px;"></a>
 </h3>
 <?php if ('0'==='1'):?>        
+
 <div class="alert alert-success alert-dismissable">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>El paquete fue guardado con éxito.</strong>
